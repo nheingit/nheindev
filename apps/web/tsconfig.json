@@ -8,7 +8,7 @@
       "esnext"
     ],
     "paths": {
-      "@ui/*": ["../../packages/ui/src/index.tsx*"]
+      "@repo/ui/*": ["../../packages/ui/src/index.tsx*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

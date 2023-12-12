@@ -1,10 +1,13 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "paths": {
+      "@repo/ui/*": ["../../packages/ui/src/index.tsx*"]
+    },
     "module": "commonjs",
     "outDir": "dist",
     "noEmit": false,
-    "jsx": "react",
+    "jsx": "react"
   },
   "include": [
     "src/server.ts",

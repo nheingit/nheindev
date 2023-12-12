@@ -1,5 +1,5 @@
 {
-  "name": "payload-example-custom-server",
+  "name": "web",
   "description": "Payload custom server example.",
   "version": "1.0.0",
   "main": "dist/server.js",
@@ -20,10 +20,11 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src"
   },
   "dependencies": {
+    "@payloadcms/bundler-webpack": "latest",
+    "@payloadcms/db-mongodb": "^1.1.0",
     "@payloadcms/db-postgres": "^0.x",
     "@payloadcms/richtext-lexical": "^0.4.1",
     "@repo/ui": "workspace:*",
-    "@payloadcms/bundler-webpack": "latest",
     "dotenv": "^8.2.0",
     "escape-html": "^1.0.3",
     "express": "^4.17.1",

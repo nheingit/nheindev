@@ -5,6 +5,7 @@ import { getPayloadClient } from '../getPayload'
 import { Page } from './../payload-types'
 import { Gutter } from './_components/Gutter'
 import { RichText } from './_components/RichText'
+import { Code } from '@repo/ui'
 
 import classes from './page.module.scss'
 
@@ -29,6 +30,7 @@ export default async function Home() {
     <Fragment>
       <main className={classes.main}>
         <Gutter>
+          <Code>hello</Code>
           <div className={classes.body}>
             <RichText content={home.richText} />
           </div>
