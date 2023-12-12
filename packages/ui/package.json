@@ -5,10 +5,7 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx",
-    "./beforeLogin": "./src/BeforeLogin.tsx"
+    ".": "./src/index.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -18,12 +15,18 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@turbo/gen": "^1.10.12",
-    "@types/node": "^20.5.2",
     "@types/eslint": "^8.44.7",
+    "@types/node": "^20.5.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "eslint": "^8.53.0",
     "react": "^18.2.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.1.0"
   }
 }
