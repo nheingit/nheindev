@@ -1,4 +1,9 @@
-/** @type {import('next').NextConfig} */
+require('dotenv').config()
+
 module.exports = {
-  transpilePackages: ["@repo/ui"],
-};
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['localhost', process.env.NEXT_PUBLIC_PAYLOAD_URL],
+  },
+}
