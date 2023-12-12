@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "paths": {
+      "@ui/*": ["../../packages/ui/src/index.tsx*"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
