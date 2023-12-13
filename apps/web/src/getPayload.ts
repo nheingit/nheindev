@@ -10,9 +10,11 @@ dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
 
+//@ts-ignore
 let cached = (global as any).payload
 
 if (!cached) {
+  //@ts-ignore
   cached = (global as any).payload = { client: null, promise: null }
 }
 

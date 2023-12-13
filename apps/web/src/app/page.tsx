@@ -1,13 +1,9 @@
 import React, { Fragment } from 'react'
 import { notFound } from 'next/navigation'
+import { Code, Button } from '@repo/ui'
 
 import { getPayloadClient } from '../getPayload'
 import { Page } from './../payload-types'
-import { Gutter } from './_components/Gutter'
-import { RichText } from './_components/RichText'
-import { Code } from '@repo/ui'
-
-import classes from './page.module.scss'
 
 export default async function Home() {
   const payload = await getPayloadClient()
@@ -28,14 +24,11 @@ export default async function Home() {
 
   return (
     <Fragment>
-      <main className={classes.main}>
-        <Gutter>
-          <Code>hello</Code>
-          <div className={classes.body}>
-            <RichText content={home.richText} />
-          </div>
-        </Gutter>
-      </main>
+      <h1 className="uppercase">hello big h1</h1>
+      <Button variant="secondary" className="animate-in zoom-in duration-500">
+        Secondary
+      </Button>
+      <Button variant="ghost">Ghost</Button>
     </Fragment>
   )
 }
