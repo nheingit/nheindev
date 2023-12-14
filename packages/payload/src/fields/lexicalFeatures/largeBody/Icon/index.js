@@ -1,6 +1,0 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.LargeBodyIcon = void 0;
-const jsx_runtime_1 = require("react/jsx-runtime");
-const LargeBodyIcon = () => ((0, jsx_runtime_1.jsxs)("svg", { className: "icon", height: "25", viewBox: "0 0 25 25", width: "25", xmlns: "http://www.w3.org/2000/svg", children: [(0, jsx_runtime_1.jsx)("path", { d: "M6.61695 9.94917L3.16602 19.25H4.65415L5.37256 17.2102H9.41361L10.1448 19.25H11.7356L8.23337 9.94917H6.61695ZM5.80874 15.9787L7.37384 11.5399L8.96461 15.9787H5.80874Z", fill: "currentColor" }), (0, jsx_runtime_1.jsx)("path", { d: "M14.2739 5.75H16.7691L21.8339 19.25H19.2457L18.1843 16.2521H12.7098L11.667 19.25H9.24635L14.2739 5.75ZM13.3988 14.2783H17.4767L15.4284 8.48724L13.3988 14.2783Z", fill: "currentColor" })] }));
-exports.LargeBodyIcon = LargeBodyIcon;
