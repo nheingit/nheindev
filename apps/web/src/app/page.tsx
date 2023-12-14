@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Code, Button, CardContent, Card, Input, Search, SearchBar } from '@repo/ui'
+import { Code, Button, CardContent, Card, Input, SearchBar } from '@repo/ui'
 import { NavigationMenuDemo } from './_components/Navbar'
 
 import { getPayloadClient } from '../getPayload'
