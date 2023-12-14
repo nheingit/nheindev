@@ -13,10 +13,12 @@ import { buildConfig } from 'payload/config'
 
 import { Pages } from './collections/Pages'
 import { Users } from './collections/Users'
+import { Posts } from './collections/Posts'
+import { Categories } from './collections/Categories'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || '',
-  collections: [Pages, Users],
+  collections: [Pages, Users, Posts, Categories],
   admin: {
     bundler: webpackBundler(),
   },

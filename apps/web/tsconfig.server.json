@@ -2,7 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@repo/ui/*": ["../../packages/ui/src/index.tsx*"]
+      "@repo/ui/*": ["../../packages/ui/src/index.tsx*"],
+      "@/lib/*": ["../../packages/ui/src/lib/utils.ts*"]
     },
     "module": "commonjs",
     "outDir": "dist",

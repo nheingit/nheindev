@@ -24,6 +24,10 @@ const start = async (): Promise<void> => {
     },
     seed: process.env.PAYLOAD_PUBLIC_SEED === 'true',
   })
+  // eslint-disable-next-line no-console
+  console.log('WOOOOOOO')
+  // eslint-disable-next-line no-console
+  console.log(payload.config.collections)
 
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {

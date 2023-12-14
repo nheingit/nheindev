@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import './globals.css'
+// import './app.scss'
 
 export const metadata = {
   title: 'NheinDev',
