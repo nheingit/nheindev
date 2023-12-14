@@ -1,0 +1,1 @@
+{"version":3,"file":"revalidate.d.ts","sourceRoot":"","sources":["revalidate.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,OAAO,EAAE,MAAM,SAAS,CAAA;AAEtC,eAAO,MAAM,UAAU,SAAgB;IACrC,UAAU,EAAE,MAAM,CAAA;IAClB,OAAO,EAAE,OAAO,CAAA;IAChB,IAAI,EAAE,MAAM,CAAA;CACb,KAAG,QAAQ,IAAI,CAsBf,CAAA"}
