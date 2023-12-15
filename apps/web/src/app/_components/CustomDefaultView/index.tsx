@@ -9,8 +9,6 @@ import { Button, Eyebrow } from 'payload/components/elements';
 import { useStepNav } from 'payload/components/hooks';
 import { useConfig, Meta } from 'payload/components/utilities';
 
-import './index.scss'
-
 const baseClass = 'custom-default-view'
 
 const CustomDefaultView: AdminViewComponent = ({ canAccessAdmin, user }) => {

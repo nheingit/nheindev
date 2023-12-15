@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
 
 import type { EntityToGroup, Group} from 'payload/dist/admin/utilities/groupNavItems'
@@ -13,7 +12,6 @@ import { useConfig } from 'payload/components/utilities'
 import type { Permissions, User } from 'payload/auth'
 import type { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types'
 
-import './index.scss'
 
 type Props = {
     collections: SanitizedCollectionConfig[]
@@ -28,7 +26,6 @@ const Dashboard: React.FC<Props> = (props) => {
   const { collections, globals, permissions, user } = props
 
   const { push } = useHistory()
-  const { i18n, t } = useTranslation('general')
 
   const {
     admin: {
@@ -93,8 +90,8 @@ const Dashboard: React.FC<Props> = (props) => {
                   let hasCreatePermission: boolean
 
                   if (type === EntityType.collection) {
-                    title = getTranslation(entity.labels.plural, i18n)
-                    buttonAriaLabel = t('showAllLabel', { label: title })
+                    title = entity?.labels?.plural as string
+
                     onClick = () => push({ pathname: `${admin}/collections/${entity.slug}` })
                     createHREF = `${admin}/collections/${entity.slug}/create`
                     hasCreatePermission =
@@ -102,8 +99,7 @@ const Dashboard: React.FC<Props> = (props) => {
                   }
 
                   if (type === EntityType.global) {
-                    title = getTranslation(entity.label, i18n)
-                    buttonAriaLabel = t('editLabel', { label: getTranslation(entity.label, i18n) })
+                    title = entity?.label as string
                     onClick = () => push({ pathname: `${admin}/globals/${entity.slug}` })
                   }
 
@@ -113,9 +109,7 @@ const Dashboard: React.FC<Props> = (props) => {
                         actions={
                           hasCreatePermission && type === EntityType.collection ? (
                             <Button
-                              aria-label={t('createNewLabel', {
-                                label: getTranslation(entity.labels.singular, i18n),
-                              })}
+
                               buttonStyle="icon-label"
                               el="link"
                               icon="plus"

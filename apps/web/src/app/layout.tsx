@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import './globals.css'
 import './app.scss'
-import './i18n'
 
 import classes from './layout.module.scss'
 
