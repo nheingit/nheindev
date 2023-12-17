@@ -7,7 +7,7 @@ export const SearchBar = () => {
   return (
     <div className="flex items-center">
       <Input className="mr-4" placeholder="Search..." />
-      <Microscope className="text-red-500" />
+      <Microscope className="text-primary" />
     </div>
   );
 };

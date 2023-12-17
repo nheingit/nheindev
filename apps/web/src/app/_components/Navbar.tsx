@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import {
-  NavigationMenu,
+  NavigationMenu as NavMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
@@ -14,33 +14,33 @@ import {
   navigationMenuTriggerStyle,
 } from '@repo/ui'
 
-export function NavigationMenuDemo() {
+export function NavigationMenu() {
   return (
-    <NavigationMenu>
+    <NavMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/posts" legacyBehavior passHref>
-            <NavigationMenuLink className={`hover:text-red-500 ` + navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={`hover:text-secondary ` + navigationMenuTriggerStyle()}>
               Posts
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="https://github.com/nheingit" legacyBehavior passHref>
-            <NavigationMenuLink className={`hover:text-red-500 ` + navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={`hover:text-secondary ` + navigationMenuTriggerStyle()}>
               Github
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="https://twitter.com/TheNoahHein" legacyBehavior passHref>
-            <NavigationMenuLink className={`hover:text-red-500 ` + navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={`hover:text-secondary ` + navigationMenuTriggerStyle()}>
               Twitter
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
-    </NavigationMenu>
+    </NavMenu>
   )
 }
 

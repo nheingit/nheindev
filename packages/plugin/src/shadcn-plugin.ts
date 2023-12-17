@@ -2,7 +2,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
 export const shadcnPlugin = plugin(
-  // 1. Add CSS cariables definitions to base layer
+  // 1. Add CSS variables definitions to base layer
   function ({ addBase }) {
     addBase({
       ":root": {
@@ -16,10 +16,10 @@ export const shadcnPlugin = plugin(
         "--input": "214.3 31.8% 91.4%",
         "--card": "0 0% 100%",
         "--card-foreground": "222.2 47.4% 11.2%",
-        "--primary": "300 75% 90%",
-        "--primary-foreground": "300 75% 20%",
-        "--secondary": "180 75% 90%",
-        "--secondary-foreground": "180 75% 20%",
+        "--primary": "0 75% 50%",
+        "--primary-foreground": "0 0% 100%",
+        "--secondary": "210 60% 55%",
+        "--secondary-foreground": "210 25% 20%",
         "--accent": "210 40% 96.1%",
         "--accent-foreground": "222.2 47.4% 11.2%",
         "--destructive": "0 100% 50%",
@@ -40,10 +40,10 @@ export const shadcnPlugin = plugin(
         "--input": "216 34% 17%",
         "--card": "224 71% 4%",
         "--card-foreground": "213 31% 91%",
-        "--primary": "300 75% 40%",
-        "--primary-foreground": "300 50% 98%",
-        "--secondary": "180 75% 30%",
-        "--secondary-foreground": "180 40% 98%",
+        "--primary": "0 75% 40%",
+        "--primary-foreground": "0 0% 100%",
+        "--secondary": "210 60% 45%",
+        "--secondary-foreground": "210 25% 30%",
         "--destructive": "0 63% 31%",
         "--destructive-foreground": "210 40% 98%",
         "--ring": "216 34% 17%",
@@ -130,5 +130,4 @@ export const shadcnPlugin = plugin(
       },
     },
   },
-  // 2. extending the tailwind theme with 'themable' utilities
 );
