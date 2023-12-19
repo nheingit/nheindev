@@ -20,6 +20,10 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src"
   },
   "dependencies": {
+    "@lexical/list": "0.12.5",
+    "@lexical/rich-text": "0.12.5",
+    "@lexical/selection": "0.12.5",
+    "@lexical/utils": "0.12.5",
     "@payloadcms/bundler-webpack": "latest",
     "@payloadcms/db-mongodb": "^1.1.0",
     "@payloadcms/db-postgres": "^0.x",
@@ -30,6 +34,7 @@
     "dotenv": "^8.2.0",
     "escape-html": "^1.0.3",
     "express": "^4.17.1",
+    "lexical": "0.12.5",
     "lucide-react": "^0.294.0",
     "next": "^14.0.4",
     "next-themes": "^0.2.1",

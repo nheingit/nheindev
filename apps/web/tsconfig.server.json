@@ -12,6 +12,6 @@
   },
   "include": [
     "src/server.ts",
-    "src/payload.config.ts",
+    "src/payload.config.ts"
   ]
 }

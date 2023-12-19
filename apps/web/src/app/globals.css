@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.step-nav::after {
+  content: none !important
+}
+

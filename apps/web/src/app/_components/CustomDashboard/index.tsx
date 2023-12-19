@@ -1,8 +1,8 @@
-"use client"
+'use client'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import type { EntityToGroup, Group} from 'payload/dist/admin/utilities/groupNavItems'
+import type { EntityToGroup, Group } from 'payload/dist/admin/utilities/groupNavItems'
 
 import { getTranslation } from 'payload/dist/utilities/getTranslation'
 import { EntityType, groupNavItems } from './groupNavItems'
@@ -12,17 +12,14 @@ import { useConfig } from 'payload/components/utilities'
 import type { Permissions, User } from 'payload/auth'
 import type { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types'
 
-
 type Props = {
-    collections: SanitizedCollectionConfig[]
-    globals: SanitizedGlobalConfig[]
-    permissions: Permissions
-    user: User
-  }
+  collections: SanitizedCollectionConfig[]
+  globals: SanitizedGlobalConfig[]
+  permissions: Permissions
+  user: User
+}
 
-const baseClass = 'dashboard'
-
-const Dashboard: React.FC<Props> = (props) => {
+const Dashboard: React.FC<Props> = props => {
   const { collections, globals, permissions, user } = props
 
   const { push } = useHistory()
@@ -35,7 +32,7 @@ const Dashboard: React.FC<Props> = (props) => {
   } = useConfig()
 
   const [groups, setGroups] = useState<Group[]>([])
-
+  // fetch data
   useEffect(() => {
     setGroups(
       groupNavItems(
@@ -45,7 +42,7 @@ const Dashboard: React.FC<Props> = (props) => {
               ({ admin: { hidden } }) =>
                 !(typeof hidden === 'function' ? hidden({ user }) : hidden),
             )
-            .map((collection) => {
+            .map(collection => {
               const entityToGroup: EntityToGroup = {
                 entity: collection,
                 type: EntityType.collection,
@@ -58,7 +55,7 @@ const Dashboard: React.FC<Props> = (props) => {
               ({ admin: { hidden } }) =>
                 !(typeof hidden === 'function' ? hidden({ user }) : hidden),
             )
-            .map((global) => {
+            .map(global => {
               const entityToGroup: EntityToGroup = {
                 entity: global,
                 type: EntityType.global,
@@ -73,15 +70,15 @@ const Dashboard: React.FC<Props> = (props) => {
   }, [collections, globals, permissions, user])
 
   return (
-    <div className={baseClass}>
-      <Gutter className={`${baseClass}__wrap`}>
+    <div>
+      <Gutter>
         {Array.isArray(beforeDashboard) &&
           beforeDashboard.map((Component, i) => <Component key={i} />)}
         {groups.map(({ entities, label }, groupIndex) => {
           return (
-            <div className={`${baseClass}__group`} key={groupIndex}>
-              <h2 className={`${baseClass}__label`}>{label}</h2>
-              <ul className={`${baseClass}__card-list`}>
+            <div key={groupIndex}>
+              <h2>{label}</h2>
+              <ul>
                 {entities.map(({ entity, type }, entityIndex) => {
                   let title: string
                   let buttonAriaLabel: string
@@ -109,7 +106,6 @@ const Dashboard: React.FC<Props> = (props) => {
                         actions={
                           hasCreatePermission && type === EntityType.collection ? (
                             <Button
-
                               buttonStyle="icon-label"
                               el="link"
                               icon="plus"

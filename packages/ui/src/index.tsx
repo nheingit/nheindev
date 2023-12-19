@@ -1,5 +1,3 @@
-import { AspectRatio } from "./aspectRatio";
-
 export * from "./afterDashboard";
 export * from "./aspectRatio";
 export * from "./button";

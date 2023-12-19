@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ThemeProvider } from './_components/theme-provider'
 import { ModeToggle } from './_components/theme-toggle'
 import { NavigationMenu } from './_components/Navbar'

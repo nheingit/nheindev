@@ -3,7 +3,9 @@
 import * as React from 'react'
 import Link from 'next/link'
 
-import { cn } from '@/lib/utils'
+// payload uses this component, and typescript is complaining about not being able to resolve it over there.
+// Not sure why *shrug*
+import { cn } from '../../../../../packages/ui/src/lib/utils'
 import {
   NavigationMenu as NavMenu,
   NavigationMenuContent,
