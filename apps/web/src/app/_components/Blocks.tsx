@@ -46,11 +46,10 @@ export const Blocks: React.FC<{
 
             if (Block) {
               return (
-                <>
-                 {/* @ts-expect-error */}
-                 <Block id={toKebabCase(blockName)} {...block} />
-                </>
-                                   
+                <div key={index}>
+                    {/* @ts-expect-error */}
+                    <Block id={toKebabCase(blockName)} {...block} />
+                </div>                                   
               )
             }
           }
