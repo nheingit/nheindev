@@ -19,7 +19,7 @@ export const MediumImpactHero: React.FC<Page['hero']> = (props) => {
             {links.map(({ link }, i) => {
               return (
                 <li key={i}>
-                  <CMSLink {...link} />
+                  <CMSLink variant={link.appearance} size={link.size} {...link} />
                 </li>
               )
             })}

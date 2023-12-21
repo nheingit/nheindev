@@ -1,31 +1,22 @@
 import type { Field } from 'payload/types'
 
 import deepMerge from '../utilities/deepMerge'
+import { variantOptions } from '@repo/ui'
 
-export const appearanceOptions = {
-  default: {
-    label: 'Default',
-    value: 'default',
-  },
-  primary: {
-    label: 'Primary Button',
-    value: 'primary',
-  },
-  secondary: {
-    label: 'Secondary Button',
-    value: 'secondary',
-  },
-}
+export const appearanceOptions = variantOptions.variant
 
-export type LinkAppearances = 'default' | 'primary' | 'secondary'
+export type LinkAppearances = keyof typeof variantOptions.variant
+export type LinkSize= keyof typeof variantOptions.size
+
 
 type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
+  size?: LinkSize[] | false
   disableLabel?: boolean
   overrides?: Record<string, unknown>
 }) => Field
 
-const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
+const link: LinkType = ({ appearances, size, disableLabel = false, overrides = {} } = {}) => {
   const linkResult: Field = {
     name: 'link',
     admin: {
@@ -123,14 +114,16 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
   }
 
   if (appearances !== false) {
-    let appearanceOptionsToUse = [
-      appearanceOptions.default,
-      appearanceOptions.primary,
-      appearanceOptions.secondary,
-    ]
+    let appearanceOptionsToUse = Object.keys(appearanceOptions).map((appearance) => ({
+      label: appearance.charAt(0).toUpperCase() + appearance.slice(1), // capitalizes first letter
+      value: appearance,
+    }))
 
     if (appearances) {
-      appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])
+      appearanceOptionsToUse = appearances.map((appearance) => ({
+        label: appearance.charAt(0).toUpperCase() + appearance.slice(1), // capitalizes first letter
+        value: appearance,
+      }))
     }
 
     linkResult.fields.push({
@@ -140,6 +133,30 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
       },
       defaultValue: 'default',
       options: appearanceOptionsToUse,
+      type: 'select',
+    })
+  }
+
+  if (size !== false) {
+    let sizeOptionsToUse = Object.keys(variantOptions.size).map((size) => ({
+      label: size.charAt(0).toUpperCase() + size.slice(1), // capitalizes first letter
+      value: size,
+    }))
+
+    if (size) {
+      sizeOptionsToUse = size.map((size) => ({
+        label: size.charAt(0).toUpperCase() + size.slice(1), // capitalizes first letter
+        value: size,
+      }))
+    }
+
+    linkResult.fields.push({
+      name: 'size',
+      admin: {
+        description: 'Choose the size of the link.',
+      },
+      defaultValue: 'default',
+      options: sizeOptionsToUse,
       type: 'select',
     })
   }

@@ -8,7 +8,7 @@ const RichText: React.FC<{ className?: string; content: any }> = ({ content }) =
   }
 
   return (
-    <div>
+    <div className='prose prose-zinc dark:prose-invert lg:prose-lg xl:prose-xl sm:prose-sm'>
       {content &&
         !Array.isArray(content) &&
         typeof content === 'object' &&

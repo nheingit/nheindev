@@ -6,7 +6,7 @@ export const shadcnPlugin = plugin(
   function ({ addBase }) {
     addBase({
       ":root": {
-        "--background": "0 0% 100%",
+        "--background": "210°, 1%, 96%",
         "--foreground": "222.2 47.4% 11.2%",
         "--muted": "210 40% 96.1%",
         "--muted-foreground": "215.4 16.3% 46.9%",
@@ -28,8 +28,8 @@ export const shadcnPlugin = plugin(
         "--radius": "0.5rem",
       },
       ".dark": {
-        "--background": "224 71% 4%",
-        "--foreground": "213 31% 91%",
+        "--background": "0 0% 11%",
+        "--foreground": "0.12 100% 99%",
         "--muted": "223 47% 11%",
         "--muted-foreground": "215.4 16.3% 56.9%",
         "--accent": "216 34% 17%",

@@ -7,6 +7,9 @@ export const Media: CollectionConfig = {
   admin: {
     description: 'Creating, updating, and deleting media is disabled for this demo.',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'alt',
@@ -23,6 +26,7 @@ export const Media: CollectionConfig = {
   ],
   slug: 'media',
   upload: {
-    staticDir: path.resolve(__dirname, '../../../media'),
+    staticURL: '/media',
+    staticDir: path.join(process.cwd(), 'public', 'media'),
   },
-}
+} 

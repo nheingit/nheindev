@@ -63,7 +63,8 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link') | null;
+            size?: ('default' | 'sm' | 'lg' | 'icon') | null;
           };
           id?: string | null;
         }[]
@@ -100,6 +101,7 @@ export interface Page {
                 url?: string | null;
                 label: string;
                 appearance?: ('primary' | 'secondary') | null;
+                size?: ('default' | 'sm' | 'lg' | 'icon') | null;
               };
               id?: string | null;
             }[]
@@ -137,7 +139,8 @@ export interface Page {
                 } | null;
                 url?: string | null;
                 label: string;
-                appearance?: ('default' | 'primary' | 'secondary') | null;
+                appearance?: ('default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link') | null;
+                size?: ('default' | 'sm' | 'lg' | 'icon') | null;
               };
               id?: string | null;
             }[]

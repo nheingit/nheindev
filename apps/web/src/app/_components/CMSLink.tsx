@@ -1,11 +1,14 @@
+import { Button } from '@repo/ui'
 import Link from 'next/link'
 import React from 'react'
 
 import type { Page } from '../../payload-types'
+import type { ButtonProps } from '@repo/ui'
 
 type CMSLinkType = {
   children?: React.ReactNode
-  className?: string
+  variant?: ButtonProps['variant']
+  size?: ButtonProps['size']
   label?: string
   newTab?: boolean
   reference?: {
@@ -18,6 +21,8 @@ type CMSLinkType = {
 
 export const CMSLink: React.FC<CMSLinkType> = ({
   children,
+  variant,
+  size,
   label,
   newTab,
   reference,
@@ -31,16 +36,16 @@ export const CMSLink: React.FC<CMSLinkType> = ({
 
   if (!href) return null
 
-    const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
+  const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
-    if (href || url) {
-      return (
-        <Link {...newTabProps} href={href || url}>
-          {label && label}
-          {children && children}
-        </Link>
-      )
-    }
-  }
 
-  
+  return (
+    //@ts-expect-error
+    <Button variant={variant} size={size}  asChild>
+      <Link {...newTabProps} href={href || url}>
+        {label && label}
+        {children && children}
+      </Link>
+    </Button>
+  )
+}
