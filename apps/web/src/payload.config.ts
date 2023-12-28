@@ -1,12 +1,10 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import FormBuilder from '@payloadcms/plugin-form-builder';
 import dotenv from 'dotenv'
 import path from 'path'
 
-dotenv.config({
-  path: path.resolve(__dirname, '../.env'),
-})
 
 import { buildConfig } from 'payload/config'
 
@@ -19,6 +17,17 @@ import { Logo } from './app/_components/logo'
 import  { Users }  from './payload/collections/Users'
 import { Pages } from './payload/collections/Pages'
 import { Media } from './payload/collections/Media'
+import link, {LinkAppearances, LinkSize} from './payload/fields/link';
+import { Field } from 'payload/types';
+
+dotenv.config({
+  path: path.resolve(__dirname, '../.env'),
+})
+
+type LinkGroupType = (options?: {
+  appearances?: LinkAppearances[] | false
+  size?: LinkSize[] | false
+}) => Field
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || '',
@@ -40,4 +49,11 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
+  plugins: [
+    FormBuilder({
+      fields: {
+        payment: false,
+      }
+    })
+  ]
 })

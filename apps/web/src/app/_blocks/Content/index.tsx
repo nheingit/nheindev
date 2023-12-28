@@ -16,8 +16,7 @@ export const ContentBlock: React.FC<
   const { columns } = props
 
   return (
-    <Gutter className="content">
-      <div className="grid grid-cols-12 gap-x-8 gap-y-4 md:grid-cols-6 md:gap-4">
+      <div className="grid gap-x-4 gap-y-4 grid-cols-12 md:gap-x-8">
         {columns &&
           columns.length > 0 &&
           columns.map((col, index) => {
@@ -26,18 +25,16 @@ export const ContentBlock: React.FC<
               oneThird: 'col-span-4',
               half: 'col-span-6',
               twoThirds: 'col-span-8',
-              full: 'col-span-12',
+              full: 'col-span-full',
             }
-            console.log(col, index)
             return (
-              <div className={`column ${columnSizeMap[size]} md:col-span-6 sm:col-span-6`} key={index}>
+              <div className={`${columnSizeMap[size]}`} key={index}>
                 <RichText content={richText} />
                 {enableLink && <div className='mt-4'><CMSLink variant={link.appearance} size={link.size} {...link} /> </div>}
               </div>
             )
           })}
       </div>
-    </Gutter>
   )
 
 }

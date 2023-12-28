@@ -7,6 +7,7 @@ import type { Page } from '../../payload-types'
 import { CallToActionBlock } from '../_blocks/CallToAction'
 //import { CommentsBlock, type CommentsBlockProps } from '../../_blocks/Comments/index'
 import { ContentBlock } from '../_blocks/Content'
+import { FormBlock } from '../_blocks/Form'
 import { toKebabCase } from '../_utilities/toKebabCase'
 //import { ContentMedia } from '../../_blocks/ContentMedia'
 //import { MediaBlock } from '../../_blocks/MediaBlock'
@@ -21,6 +22,7 @@ const blockComponents = {
   content: ContentBlock,
   //contentMedia: ContentMedia,
   cta: CallToActionBlock,
+  formBlock: FormBlock,
   //mediaBlock: MediaBlock,
   //relatedPosts: RelatedPosts,
 }
@@ -47,7 +49,7 @@ export const Blocks: React.FC<{
             if (Block) {
               return (
                 <div key={index}>
-                    {/* @ts-expect-error */}
+                    {/*@ts-expect-error */}
                     <Block id={toKebabCase(blockName)} {...block} />
                 </div>                                   
               )

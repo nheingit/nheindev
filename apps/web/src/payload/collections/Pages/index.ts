@@ -12,6 +12,7 @@ import { slugField } from '../../fields/slug'
 import { populateArchiveBlock } from '../../../hooks/populateArchiveBlock'
 import { populatePublishedDate } from '../../../hooks/populatePublishedDate'
 import { revalidatePage } from './hooks/revalidatePage'
+import { FormBlock } from '../../blocks/Form'
 
 export const Pages: CollectionConfig = {
   access: {
@@ -61,6 +62,7 @@ export const Pages: CollectionConfig = {
               blocks: [
                 CallToAction, 
                 Content, 
+                FormBlock,
                 //ContentMedia, 
                 //MediaBlock, 
                 //Archive

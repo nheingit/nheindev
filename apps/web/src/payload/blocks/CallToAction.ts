@@ -6,10 +6,18 @@ import richText from '../fields/richText'
 
 export const CallToAction: Block = {
   fields: [
+    {
+      name: 'url',
+      admin: {
+        condition: (_, siblingData) => siblingData?.type === 'custom',
+      },
+      label: 'Custom URL',
+      required: true,
+      type: 'text',
+    },
     invertBackground,
     richText(),
     linkGroup({
-      appearances: ['primary', 'secondary'],
       overrides: {
         maxRows: 2,
       },
