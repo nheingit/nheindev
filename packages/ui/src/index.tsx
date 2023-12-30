@@ -5,9 +5,11 @@ export * from "./card";
 export * from "./code";
 export * from "./dropdownMenu";
 export * from "./footer";
+export * from "./form"
 export * from "./navigationBar";
 export * from "./hero";
 export * from "./input";
+export * from "./label"
 export * from "./logout";
 export * from "./navigationBar";
 export * from "./searchBar";

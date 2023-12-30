@@ -15,8 +15,8 @@ import { formSchema } from "../_utilities/zodSchema"
 type Props = Extract<Page['layout'][0], { blockType: 'formBlock' }>
 type Inputs = z.infer<typeof formSchema>
 
-export const FormBlock: React.FC<Props> = ({id, form, description}) => {
-    const { submitButtonLabel } = form as Form
+export const FormBlock: React.FC<Props> = ({form, description}) => {
+    const { submitButtonLabel, id} = form as Form
     const formMethods = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -25,14 +25,19 @@ export const FormBlock: React.FC<Props> = ({id, form, description}) => {
 
     })
     const onSubmit: SubmitHandler<Inputs> = async data => {
-        const result = await submitEmailForm(data)
-        if (!result) {
-            console.log('something went wrong')
-        }
+      // pass the ID to the action since we need it to submit in the payload request
+      const submitEmail = submitEmailForm.bind(null, id)
+      // format the data prior to sending
+      const dataToSend = Object.entries(data).map(([name, value]) => ({
+        field: name,
+        value,
+      }))
+      await submitEmail(dataToSend)
+      formMethods.reset()
     }
     return (
     <FormWrapper {...formMethods}>
-      <form id={id} onSubmit={formMethods.handleSubmit(onSubmit)} className="space-y-8">
+      <form id={id} onSubmit={formMethods.handleSubmit((data) => onSubmit(data))} className="space-y-8">
         <FormField
           control={formMethods.control}
           name="email"

@@ -32,6 +32,11 @@ type LinkGroupType = (options?: {
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || '',
   collections: [Users, Pages, Media],
+  email: {
+    fromName: 'Admin',
+    fromAddress: 'admin@example.com',
+    logMockCredentials: true,
+  },
   admin: {
     components: {
       graphics: {

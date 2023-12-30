@@ -16,7 +16,7 @@ export const shadcnPlugin = plugin(
         "--input": "214.3 31.8% 91.4%",
         "--card": "0 0% 100%",
         "--card-foreground": "222.2 47.4% 11.2%",
-        "--primary": "0 75% 50%",
+        "--primary": "0, 75%, 55%",
         "--primary-foreground": "0 0% 100%",
         "--secondary": "210 60% 55%",
         "--secondary-foreground": "210 25% 20%",
