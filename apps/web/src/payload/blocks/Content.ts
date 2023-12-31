@@ -29,6 +29,11 @@ const columnFields: Field[] = [
   },
   richText(),
   {
+    name: 'codeblock',
+    type: 'code',
+    required: false,
+  },
+  {
     name: 'enableLink',
     type: 'checkbox',
   },

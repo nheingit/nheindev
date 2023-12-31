@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 export const BannerImage: React.FC = () => (
   <div className="svg-container dark:filter dark:invert">
     <svg

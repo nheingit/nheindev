@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.3",
+    "@lexical/code": "0.12.5",
     "@lexical/list": "0.12.5",
     "@lexical/rich-text": "0.12.5",
     "@lexical/selection": "0.12.5",
@@ -41,6 +42,7 @@
     "next": "^14.0.4",
     "next-themes": "^0.2.1",
     "payload": "latest",
+    "payload-plugin-lexical": "^0.6.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",

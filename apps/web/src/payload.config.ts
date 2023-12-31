@@ -19,6 +19,7 @@ import { Pages } from './payload/collections/Pages'
 import { Media } from './payload/collections/Media'
 import link, {LinkAppearances, LinkSize} from './payload/fields/link';
 import { Field } from 'payload/types';
+import { CodeBlockFeature } from './payload/plugin/CodeBlock';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -47,7 +48,12 @@ export default buildConfig({
     },
     bundler: webpackBundler(),
   },
-  editor: lexicalEditor({}),
+  editor: lexicalEditor({
+    features: ({defaultFeatures}) => [
+      ...defaultFeatures,
+      CodeBlockFeature()
+    ]
+  }),
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),

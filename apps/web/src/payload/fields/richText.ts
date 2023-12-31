@@ -5,6 +5,7 @@ import { ParagraphFeature, UploadFeature, lexicalEditor } from '@payloadcms/rich
 
 import deepMerge from '../utilities/deepMerge'
 import link from './link'
+import { CodeBlockFeature } from '../plugin/CodeBlock'
 
 type RichText = (
   overrides?: Partial<RichTextField>,
@@ -23,8 +24,8 @@ const richText: RichText = (
     {
       name: 'richText',
       editor: lexicalEditor({
-        features: () => [
-          ...[...(additions.features || [])],
+        features: ({defaultFeatures}) => [
+          ...[CodeBlockFeature(), ...defaultFeatures, ...(additions.features || [])],
           UploadFeature({
             collections: {
               media: {
@@ -32,7 +33,7 @@ const richText: RichText = (
                   {
                     name: 'caption',
                     editor: lexicalEditor({
-                      features: () => [ParagraphFeature()],
+                      features: () => [ParagraphFeature(), ...defaultFeatures],
                     }),
                     label: 'Caption',
                     type: 'richText',
