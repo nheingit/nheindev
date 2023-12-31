@@ -102,6 +102,17 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           case 'paragraph': {
             return <p key={index}>{serializedChildren}</p>
           }
+          case 'code': {
+            const node = _node as SerializedCodeNode;
+            const serializedChildren = serializeLexical({ nodes: node.children });
+            return (
+              <pre key={index}>
+                <code dir={node.direction} data-highlight-language={node.language}>
+                  {serializedChildren}
+                </code>
+              </pre>
+            )
+          }
           case 'heading': {
             const node = _node as SerializedHeadingNode
 

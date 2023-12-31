@@ -1,9 +1,10 @@
-import { $createCodeNode, CodeNode } from '@lexical/code';
+import { $createCodeNode, CodeNode, SerializedCodeNode } from '@lexical/code';
 import { $setBlocksType } from '@lexical/selection';
 import { $getSelection, $isRangeSelection } from 'lexical';
 
 import type { FeatureProvider } from '@payloadcms/richtext-lexical';
-import { TextDropdownSectionWithEntries } from '@payloadcms/richtext-lexical';
+import { TextDropdownSectionWithEntries, convertLexicalNodesToHTML } from '@payloadcms/richtext-lexical';
+import { HTMLConverter } from '@payloadcms/richtext-lexical';
 
 import { SlashMenuOption } from '@payloadcms/richtext-lexical';
 
@@ -63,6 +64,27 @@ export const CodeBlockFeature = (): FeatureProvider => {
         },
         nodes: [
           {
+            converters: {
+                html: {
+                    converter: async ({converters, node, parent}) => {
+                        const childrenText = await convertLexicalNodesToHTML({
+                            converters,
+                            lexicalNodes: node.children,
+                            parent: {
+                                ...node,
+                                parent,
+                            }
+                        })
+                        const formattedChildrenText = childrenText
+                            .replace(/\n/g, '<br>')
+                            .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;'); // Replace tabs with spaces
+
+                        // Return the code wrapped in a <code> tag with the appropriate classes and attributes
+                        return `<code data-highlight-language="${node.language}" dir="${node.direction}">${formattedChildrenText}</code>`;
+                    },
+                    nodeTypes: [CodeNode.getType()]
+                } as HTMLConverter<SerializedCodeNode>,
+            },
             node: CodeNode,
             type: CodeNode.getType(),
           },
