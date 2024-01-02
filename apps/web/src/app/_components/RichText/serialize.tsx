@@ -3,6 +3,7 @@ import type { SerializedListItemNode, SerializedListNode } from '@lexical/list'
 import type { SerializedHeadingNode, SerializedQuoteNode } from '@lexical/rich-text'
 import type { LinkFields, SerializedLinkNode } from '@payloadcms/richtext-lexical'
 import type { SerializedElementNode, SerializedLexicalNode, SerializedTextNode } from 'lexical'
+import { SerializedCodeNode } from '@lexical/code'
 
 import escapeHTML from 'escape-html'
 import Link from 'next/link'

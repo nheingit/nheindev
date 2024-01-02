@@ -1,17 +1,22 @@
 import { $createCodeNode, CodeNode, SerializedCodeNode } from '@lexical/code';
 import { $setBlocksType } from '@lexical/selection';
-import { $getSelection, $isRangeSelection } from 'lexical';
+import { $INTERNAL_isPointSelection, $getSelection, $isRangeSelection, FORMAT_TEXT_COMMAND } from 'lexical';
 
 import type { FeatureProvider } from '@payloadcms/richtext-lexical';
 import { TextDropdownSectionWithEntries, convertLexicalNodesToHTML } from '@payloadcms/richtext-lexical';
+import { SectionWithEntries } from '@payloadcms/richtext-lexical/dist/field/features/format/common/floatingSelectToolbarSection';
 import { HTMLConverter } from '@payloadcms/richtext-lexical';
 
 import { SlashMenuOption } from '@payloadcms/richtext-lexical';
 
-const setCodeBlock = () => {
+const setCodeBlock = (language = 'plaintext') => {
   const selection = $getSelection();
   if ($isRangeSelection(selection)) {
-    $setBlocksType(selection, () => $createCodeNode());
+    $setBlocksType(selection, () => {
+      const codeNode = $createCodeNode()
+      codeNode.setLanguage(language)
+      return codeNode
+    });
   }
 };
 
@@ -31,12 +36,13 @@ export const CodeBlockFeature = (): FeatureProvider => {
                         onClick: ({ editor }) => {
                         editor.update(() => {
                             const selection = $getSelection();
-                            if ($isRangeSelection(selection)) {
+                            console.log(selection)
+                            if ($INTERNAL_isPointSelection(selection)) {
                             $setBlocksType(selection, () => $createCodeNode());
                             }
                         });
                         },
-                        order: 1,
+                        order: 20,
                     }
                 ]),
             ],
@@ -76,11 +82,11 @@ export const CodeBlockFeature = (): FeatureProvider => {
                             }
                         })
                         const formattedChildrenText = childrenText
-                            .replace(/\n/g, '<br>')
-                            .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;'); // Replace tabs with spaces
-
-                        // Return the code wrapped in a <code> tag with the appropriate classes and attributes
-                        return `<code data-highlight-language="${node.language}" dir="${node.direction}">${formattedChildrenText}</code>`;
+                          .split('\n')
+                          .map(line => `<code>${line}</code>`)
+                          .join('\n');
+                          const language = node.language; // Get the language from the node
+                          return `<pre><code class="language-${language}">${formattedChildrenText}</code></pre>`;
                     },
                     nodeTypes: [CodeNode.getType()]
                 } as HTMLConverter<SerializedCodeNode>,
