@@ -6,14 +6,7 @@ import { ParagraphFeature, UploadFeature, lexicalEditor, defaultEditorConfig, de
 import deepMerge from '../utilities/deepMerge'
 import link from './link'
 import { CodeBlockFeature } from '../plugin/CodeBlock'
-
-const EditorConfig = defaultEditorConfig
-
-EditorConfig.features = [
-  ...defaultEditorFeatures,
-  CodeBlockFeature(),
-]
-
+import { CodeLanguageFeature } from '../plugin/LanguageSelect'
 
 type RichText = (
   overrides?: Partial<RichTextField>,
@@ -33,7 +26,7 @@ const richText: RichText = (
       name: 'richText',
       editor: lexicalEditor({
         features: ({defaultFeatures}) => [
-          ...[CodeBlockFeature(), ...defaultFeatures, ...(additions.features || [])],
+          ...[CodeBlockFeature(), CodeLanguageFeature(), ...defaultFeatures, ...(additions.features || [])],
           UploadFeature({
             collections: {
               media: {

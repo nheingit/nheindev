@@ -105,6 +105,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
           case 'code': {
             const node = _node as SerializedCodeNode;
+            console.log(node)
             const serializedChildren = serializeLexical({ nodes: node.children });
             return (
               <pre key={index}>
