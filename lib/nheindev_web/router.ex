@@ -29,7 +29,7 @@ defmodule NheindevWeb.Router do
   scope "/admin", NheindevWeb.Admin do
     pipe_through :browser
 
-    get "/", NheindevWeb.Admin.DashboardController, :index
+    get "/", DashboardController, :index
     get "/:ecto_object", EctoObjectController, :show
   end
 

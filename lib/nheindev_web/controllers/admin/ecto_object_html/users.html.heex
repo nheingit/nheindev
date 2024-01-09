@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= for user <- [%{id: 1, name: 'john', email: 'email.com'}, {id: 2, name: 'doe', email: 'email.net'},{id: 3, name: 'noah', email: 'email.ai'}]do %>
+    <%= for user <- [%{id: 1, name: 'john', email: 'email.com'}, %{id: 2, name: 'doe', email: 'email.net'},%{id: 3, name: 'noah', email: 'email.ai'}]do %>
       <tr>
         <td><%= user.id %></td>
         <td><%= user.name %></td>

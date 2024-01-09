@@ -3,6 +3,7 @@ defmodule NheindevWeb.Admin.EctoObjectController do
   def show(conn, %{"ecto_object" => ecto_object}) do
     # Here, use ecto_object to query the database for the corresponding records
     # You'll need to implement logic to handle different object types
-    render(conn, "#{ecto_object}.html")
+    posts = Nheindev.Repo.all(Nheindev.Blog.Post)
+    render(conn, "#{ecto_object}.html", records: posts)
   end
 end
