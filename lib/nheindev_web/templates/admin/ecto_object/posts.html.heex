@@ -1,0 +1,21 @@
+<h1>Users</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <!-- Add more columns as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <%= for user <- [%{id: 1, name: 'john', email: 'email.com'}, {id: 2, name: 'doe', email: 'email.net'},{id: 3, name: 'noah', email: 'email.ai'}]do %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <!-- Add more data columns as needed -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

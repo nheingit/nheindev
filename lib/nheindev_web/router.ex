@@ -26,6 +26,12 @@ defmodule NheindevWeb.Router do
   # scope "/api", NheindevWeb do
   #   pipe_through :api
   # end
+  scope "/admin", NheindevWeb.Admin do
+    pipe_through :browser
+
+    get "/", NheindevWeb.Admin.DashboardController, :index
+    get "/:ecto_object", EctoObjectController, :show
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:nheindev, :dev_routes) do
