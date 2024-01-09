@@ -47,18 +47,21 @@ Hooks.Editor = {
           console.log('Editor.js is ready to work!')
         }
       });
-  
-      document.querySelector("button").addEventListener("click", () => {
-        this.editor.save().then((outputData) => {
-            console.log(outputData)
-            this.pushEvent("save_content", {content: outputData});
-        });
+    let saveButton = document.querySelector("#save-editor-content");
+    saveButton.addEventListener("click", () => {
+      this.editor.save().then((outputData) => {
+        this.pushEvent("save_content", {value: outputData});
+      }).catch((error) => {
+        console.log('Saving failed: ', error);
       });
-    },
-    destroyed() {
+    });
+  },
+  destroyed() {
+    if (this.editor) {
       this.editor.destroy();
     }
   }
+}
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, params: {_csrf_token: csrfToken}})
