@@ -19,6 +19,7 @@ defmodule NheindevWeb.Router do
 
     get "/", PageController, :home
     live "/editor", EditorLive
+    live "/posts/:slug", PostLive, as: :post
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,12 @@
+<article class="prose xl:prose-xl">
+<h1><%= @post.title %></h1>
+<%= for block <- @post.content["blocks"] do %>
+    <%= case block["type"] do %>
+        <% "paragraph" -> %>
+        <p><%= block["data"]["text"] %></p>
+        <% # Add more cases here for different types if needed %>
+        <% _other -> %>
+        <div>Unknown block type: <%= block["type"] %></div>
+    <% end %>
+<% end %>
+</article>

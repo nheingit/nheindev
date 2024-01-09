@@ -50,7 +50,8 @@ Hooks.Editor = {
     let saveButton = document.querySelector("#save-editor-content");
     saveButton.addEventListener("click", () => {
       this.editor.save().then((outputData) => {
-        this.pushEvent("save_content", {value: outputData});
+        const title = document.querySelector("#blog-title").value;
+        this.pushEvent("save_content", {title: title, value: outputData});
       }).catch((error) => {
         console.log('Saving failed: ', error);
       });
