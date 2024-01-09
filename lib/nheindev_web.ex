@@ -86,12 +86,12 @@ defmodule NheindevWeb do
       # Core UI components and translation
       import NheindevWeb.CoreComponents
       import NheindevWeb.Gettext
-
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())
+      use PetalComponents
     end
   end
 
