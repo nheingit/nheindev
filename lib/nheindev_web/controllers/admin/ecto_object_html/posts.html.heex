@@ -1,21 +1,23 @@
-<h1>Posts</h1>
-<table>
+<.h1 class="mb-4">Posts</.h1>
+<.table>
   <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <!-- Add more columns as needed -->
-    </tr>
+    <.tr>
+      <.th>ID</.th>
+      <.th>title</.th>
+      <.th>Slug</.th>
+      <.th>Preview</.th>
+    </.tr>
   </thead>
   <tbody>
-    <%= for user <- [%{id: 1, name: 'john', email: 'email.com'}, %{id: 2, name: 'doe', email: 'email.net'}, %{id: 3, name: 'noah', email: 'email.ai'}] do %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <!-- Add more data columns as needed -->
-      </tr>
+    <%= for post <- @records do %>
+      <.tr>
+        <.td><%= post.id %></.td>
+        <.td><%= post.title || "No Title" %></.td>
+        <.td><%= post.slug %></.td>
+        <.td>
+          <.link href={~p"/posts/#{post.slug}"}>View Post</.link>
+        </.td>
+      </.tr>
     <% end %>
   </tbody>
-</table>
+</.table>
