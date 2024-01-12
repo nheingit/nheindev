@@ -1,11 +1,14 @@
 <.h1 class="mb-4">Posts</.h1>
-<.table>
+<.table class="mb-4">
   <thead>
     <.tr>
       <.th>ID</.th>
       <.th>title</.th>
       <.th>Slug</.th>
-      <.th>Preview</.th>
+      <.th>Is Published</.th>
+      <.th>View</.th>
+      <.th>Edit</.th>
+      <.th>Delete</.th>
     </.tr>
   </thead>
   <tbody>
@@ -14,10 +17,30 @@
         <.td><%= post.id %></.td>
         <.td><%= post.title || "No Title" %></.td>
         <.td><%= post.slug %></.td>
+        <.td><%= post.is_published %></.td>
         <.td>
-          <.link href={~p"/posts/#{post.slug}"}>View Post</.link>
+          <.icon_button size="md" color="info" link_type="a" to={~p"/posts/#{post.slug}"}>
+            <Heroicons.eye solid />
+          </.icon_button>
+        </.td>
+        <.td>
+          <.icon_button size="md" link_type="live_redirect" to={~p"/admin/posts/editor/#{post.slug}"} color="success">
+            <Heroicons.pencil_square solid />
+          </.icon_button>
+        </.td>
+        <.td>
+          <.icon_button size="md" color="danger">
+            <Heroicons.trash solid />
+          </.icon_button>
         </.td>
       </.tr>
     <% end %>
   </tbody>
 </.table>
+<.button icon={:document_plus} 
+  class="w-1/3"
+  link_type="live_redirect" 
+  to="/admin/posts/editor" 
+  label="Create New Post" 
+  color="primary"
+  />

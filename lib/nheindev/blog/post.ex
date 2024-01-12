@@ -6,6 +6,7 @@ defmodule Nheindev.Blog.Post do
     field :title, :string
     field :slug, :string
     field :content, :map
+    field :is_published, :boolean
     timestamps(type: :utc_datetime)
   end
 
@@ -17,6 +18,12 @@ defmodule Nheindev.Blog.Post do
     %Nheindev.Blog.Post{}
     |> Nheindev.Blog.Post.changeset(attrs)
     |> Nheindev.Repo.insert()
+  end
+
+  def update_post(attrs \\ %{}) do
+    %Nheindev.Blog.Post{}
+    |> Nheindev.Blog.Post.changeset(attrs)
+    |> Nheindev.Repo.update()
   end
 
   @doc false

@@ -1,2 +1,7 @@
 <h1>Admin Dashboard</h1>
 <p>Welcome to the Admin Dashboard</p>
+  <%= for table <- @ecto_objects do %>
+    <div>
+     <.link href={~p"/admin/#{table}"}>View <%= table %></.link>
+    </div>
+  <% end %>

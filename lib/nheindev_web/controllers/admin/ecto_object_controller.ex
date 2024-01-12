@@ -13,4 +13,8 @@ defmodule NheindevWeb.Admin.EctoObjectController do
   defp fetch_records_for("posts") do
     Repo.all(Nheindev.Blog.Post)
   end
+
+  defp fetch_records_for("users") do
+    Repo.all(Nheindev.Blog.Post)
+  end
 end

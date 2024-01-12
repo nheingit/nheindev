@@ -21,7 +21,6 @@ defmodule NheindevWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    live "/editor", EditorLive
     live "/posts/:slug", PostLive, as: :post
   end
 
@@ -34,6 +33,8 @@ defmodule NheindevWeb.Router do
 
     get "/", DashboardController, :index
     get "/:ecto_object", EctoObjectController, :show
+    live "/posts/editor", EditorLive
+    live "/posts/editor/:slug", EditorLive
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
