@@ -1,8 +1,36 @@
-<input type="text" id="blog-title" placeholder="Enter Blog Title" value={"#{@post.title}"} class="mb-4 p-2 border border-gray-400">
-<div  class="outline-gray-500 outline p-4 mb-4" id="editor-container">
-  <div id="editorjs" phx-hook="Editor" phx-update="replace" data-content={"#{@editor_content}"}></div>
+<div class="grid grid-cols-2">
+  <div>
+    <input
+      type="text"
+      id="blog-title"
+      placeholder="Enter Blog Title"
+      value={"#{@post.title}"}
+      class="mb-4 p-2 border border-gray-400"
+      phx-keyup="update_title"
+    />
+    <div class="outline-gray-500 outline p-4 mb-4" id="editor-container">
+      <div
+        id="editorjs"
+        phx-hook="Editor"
+        phx-update="replace"
+        data-content={"#{@editor_content}"}
+      >
+      </div>
+    </div>
+    <input
+      type="checkbox"
+      id="is-published"
+      phx-value-is-published={@post.is_published}
+      checked={@post.is_published}
+      phx-keyup="update_content"
+    />
+    <label for="is-published">Is Published</label>
+    <.button label="Save Content" id="save-editor-content" phx-click="save_content" />
+  </div>
+  <div>
+    <%= live_render(@socket, NheindevWeb.PostLive,
+      id: "post-preview-#{@slug}",
+      session: %{"slug" => @slug}
+    ) %>
+  </div>
 </div>
-<.field field={@form[:field_name]} type="checkbox" />
-<.button label="Save Content" id="save-editor-content" phx-click="save_content"/>
-
-

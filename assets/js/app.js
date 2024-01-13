@@ -43,11 +43,15 @@ Hooks.Editor = {
         .save()
         .then((outputData) => {
           const title = document.querySelector("#blog-title").value;
-          this.pushEvent("save_content", { title: title, value: outputData });
+          const isPublished = document.querySelector("#is-published").checked;
+          this.pushEvent("save_content", { title: title, value: outputData, is_published: isPublished });
         })
         .catch((error) => {
           console.log("Saving failed: ", error);
         });
+    });
+    document.querySelector("#blog-title").addEventListener("keyup", (e) => {
+      this.pushEvent("update_title", { value: e.target.value });
     });
   },
   destroyed() {
@@ -78,6 +82,11 @@ Hooks.Editor = {
         },
         onReady: () => {
           console.log("Editor.js is ready to work!");
+          this.editor.on('change', () => {
+            this.editor.save().then((outputData) => {
+              this.pushEvent("update_content", { value: outputData });
+            });
+          });
         },
       });
     } catch (error) {

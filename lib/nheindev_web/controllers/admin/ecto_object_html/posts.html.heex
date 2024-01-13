@@ -29,7 +29,7 @@
           </.icon_button>
         </.td>
         <.td>
-          <.icon_button size="md" color="danger">
+          <.icon_button link_type="a" to={~p"/admin/posts/#{post.id}"} data={[confirm: "Are you sure?"]} method={:delete} size="md" color="danger" >
             <Heroicons.trash solid />
           </.icon_button>
         </.td>

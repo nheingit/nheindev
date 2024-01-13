@@ -33,6 +33,7 @@ defmodule NheindevWeb.Router do
 
     get "/", DashboardController, :index
     get "/:ecto_object", EctoObjectController, :show
+    delete "/:ecto_object/:id", EctoObjectController, :delete
     live "/posts/editor", EditorLive
     live "/posts/editor/:slug", EditorLive
   end

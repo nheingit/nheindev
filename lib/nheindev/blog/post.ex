@@ -6,12 +6,16 @@ defmodule Nheindev.Blog.Post do
     field :title, :string
     field :slug, :string
     field :content, :map
-    field :is_published, :boolean
+    field :is_published, :boolean, default: false
     timestamps(type: :utc_datetime)
   end
 
   def get_post_by_slug(slug) do
     Nheindev.Repo.get_by(Nheindev.Blog.Post, slug: slug)
+  end
+
+  def get_post_by_id(id) do
+    Nheindev.Repo.get_by(Nheindev.Blog.Post, id: id)
   end
 
   def create_post(attrs \\ %{}) do
@@ -26,10 +30,14 @@ defmodule Nheindev.Blog.Post do
     |> Nheindev.Repo.update()
   end
 
+  def delete_post(post) do
+    Nheindev.Repo.delete(post)
+  end
+
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :slug])
+    |> cast(attrs, [:title, :content, :slug, :is_published])
     |> validate_required([:title, :content])
     |> validate_slug()
     |> maybe_generate_slug()
