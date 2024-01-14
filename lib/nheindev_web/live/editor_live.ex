@@ -37,13 +37,13 @@ defmodule NheindevWeb.Admin.EditorLive do
 
   def handle_event("update_title", %{"value" => title}, socket) do
     # Broadcast the updated title
-    Phoenix.PubSub.broadcast(Nheindev.PubSub, "post:#{socket.assigns.slug}:title", title)
+    Phoenix.PubSub.broadcast(Nheindev.PubSub, "post:#{socket.assigns.slug}", {:title_updated, title})
     {:noreply, socket}
   end
 
   def handle_event("update_content", %{"value" => content}, socket) do
     # Broadcast the updated content
-    Phoenix.PubSub.broadcast(Nheindev.PubSub, "post:#{socket.assigns.slug}:content", content)
+    Phoenix.PubSub.broadcast(Nheindev.PubSub, "post:#{socket.assigns.slug}", {:content_updated, content})
     {:noreply, socket}
   end
 

@@ -27,7 +27,7 @@
     <label for="is-published">Is Published</label>
     <.button label="Save Content" id="save-editor-content" phx-click="save_content" />
   </div>
-  <div>
+  <div class='p-2'>
     <%= live_render(@socket, NheindevWeb.PostLive,
       id: "post-preview-#{@slug}",
       session: %{"slug" => @slug}
