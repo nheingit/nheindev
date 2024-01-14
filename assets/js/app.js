@@ -88,6 +88,11 @@ Hooks.Editor = {
             });
           });
         },
+        onChange: (api, event) => {
+          api.saver.save().then((outputData) => {
+            this.pushEvent("update_content", { value: outputData });
+          })
+        }
       });
     } catch (error) {
       console.log("Error initializing Editor.js:", error);
