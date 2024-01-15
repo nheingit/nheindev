@@ -1,0 +1,21 @@
+  <div class="">
+    <input
+      type="text"
+      id="blog-title"
+      placeholder="Enter Blog Title"
+      class="mb-4 p-2 border border-gray-400"
+    />
+    <div class="outline-gray-500 outline py-4 mb-4" id="editor-container">
+      <div
+        id="editorjs"
+        phx-hook="Editor"
+      >
+      </div>
+    </div>
+    <input
+      type="checkbox"
+      id="is-published"
+    />
+    <label for="is-published">Is Published</label>
+    <.button label="Save Content" id="save-editor-content" phx-click="save_content" />
+  </div>

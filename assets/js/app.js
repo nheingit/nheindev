@@ -34,7 +34,7 @@ import editorjsCodecup from "@calumk/editorjs-codecup";
 let Hooks = {};
 Hooks.Editor = {
   mounted() {
-    let content = JSON.parse(this.el.dataset.content || {})
+    let content = JSON.parse(this.el.dataset.content || "{}")
     this.initializeEditor(content);
 
     let saveButton = document.querySelector("#save-editor-content");
@@ -82,11 +82,6 @@ Hooks.Editor = {
         },
         onReady: () => {
           console.log("Editor.js is ready to work!");
-          this.editor.on('change', () => {
-            this.editor.save().then((outputData) => {
-              this.pushEvent("update_content", { value: outputData });
-            });
-          });
         },
         onChange: (api, event) => {
           api.saver.save().then((outputData) => {
@@ -99,6 +94,13 @@ Hooks.Editor = {
     }
   },
 };
+
+// Initialize Prism
+Hooks.Highlight = {
+  mounted() {
+    Prism.highlightAll()
+  },
+}
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")

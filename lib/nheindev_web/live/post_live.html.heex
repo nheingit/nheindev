@@ -4,6 +4,11 @@
     <%= case block["type"] do %>
         <% "paragraph" -> %>
         <p><%= block["data"]["text"] %></p>
+        <% "header" -> %>
+        <%= dynamic_heading(block) %>
+        <% "code" -> %>
+        <pre class='not-prose'><code><%= block["data"]["code"] %></code></pre>
+        <pre><code class={"language-#{block["data"]["language"]}"}><%= block["data"]["code"] %></code></pre>
         <% # Add more cases here for different types if needed %>
         <% _other -> %>
         <div>Unknown block type: <%= block["type"] %></div>
