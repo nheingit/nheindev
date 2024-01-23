@@ -12,6 +12,7 @@ module.exports = {
     "./js/**/*.js",
     "../lib/nheindev_web.ex",
     "../lib/nheindev_web/**/*.*ex",
+    "../lib/nheindev_web/**/*.html.heex",
     "../deps/petal_components/**/*.*ex",
   ],
   darkMode: "class",
