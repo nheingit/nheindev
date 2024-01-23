@@ -1,4 +1,4 @@
-<article class="prose xl:prose-xl">
+<article class="prose mx-auto">
 <h1><%= @post.title %></h1>
 <%= for block <- @post.content["blocks"] do %>
     <%= case block["type"] do %>
@@ -7,7 +7,6 @@
         <% "header" -> %>
         <%= dynamic_heading(block) %>
         <% "code" -> %>
-        <pre class='not-prose'><code><%= block["data"]["code"] %></code></pre>
         <pre><code class={"language-#{block["data"]["language"]}"}><%= block["data"]["code"] %></code></pre>
         <% # Add more cases here for different types if needed %>
         <% _other -> %>

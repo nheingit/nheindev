@@ -95,13 +95,6 @@ Hooks.Editor = {
   },
 };
 
-// Initialize Prism
-Hooks.Highlight = {
-  mounted() {
-    Prism.highlightAll()
-  },
-}
-
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute("content");

@@ -3,9 +3,11 @@
 
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
+const typography = require("@tailwindcss/typography")
 
 const fs = require("fs");
 const path = require("path");
+
 
 module.exports = {
   content: [
@@ -25,6 +27,17 @@ module.exports = {
       },
     },
     extend: {
+        typography: {
+          DEFAULT: {
+            css: {
+              pre: false,
+              code: false,
+              'pre code': false,
+              'code::before': false,
+              'code::after': false
+            }
+          }
+        },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -103,7 +116,6 @@ module.exports = {
     },
     plugins: [
       require("@tailwindcss/forms"),
-      require("@tailwindcss/typography"),
       // Allows prefixing tailwind classes with LiveView classes to add rules
       // only when LiveView classes are applied, for example:
       //
@@ -133,64 +145,6 @@ module.exports = {
           ".phx-change-loading &",
         ])
       ),
-      // plugin(({ addBase })=> {
-        // addBase({
-          // ":root": {
-            // "--background": "210°, 1%, 96%",
-            // "--foreground": "222.2 47.4% 11.2%",
-            // "--muted": "210 40% 96.1%",
-            // "--muted-foreground": "215.4 16.3% 46.9%",
-            // "--popover": "0 0% 100%",
-            // "--popover-foreground": "222.2 47.4% 11.2%",
-            // "--border": "214.3 31.8% 91.4%",
-            // "--input": "214.3 31.8% 91.4%",
-            // "--card": "0 0% 100%",
-            // "--card-foreground": "222.2 47.4% 11.2%",
-            // "--primary": "0, 75%, 55%",
-            // "--primary-foreground": "0 0% 100%",
-            // "--secondary": "210 60% 55%",
-            // "--secondary-foreground": "210 25% 20%",
-            // "--accent": "210 40% 96.1%",
-            // "--accent-foreground": "222.2 47.4% 11.2%",
-            // "--destructive": "0 100% 50%",
-            // "--destructive-foreground": "210 40% 98%",
-            // "--ring": "215 20.2% 65.1%",
-            // "--radius": "0.5rem",
-          // },
-          // ".dark": {
-            // "--background": "0 0% 11%",
-            // "--foreground": "0.12 100% 99%",
-            // "--muted": "223 47% 11%",
-            // "--muted-foreground": "215.4 16.3% 56.9%",
-            // "--accent": "216 34% 17%",
-            // "--accent-foreground": "210 40% 98%",
-            // "--popover": "224 71% 4%",
-            // "--popover-foreground": "215 20.2% 65.1%",
-            // "--border": "216 34% 17%",
-            // "--input": "216 34% 17%",
-            // "--card": "224 71% 4%",
-            // "--card-foreground": "213 31% 91%",
-            // "--primary": "0 75% 40%",
-            // "--primary-foreground": "0 0% 100%",
-            // "--secondary": "210 60% 45%",
-            // "--secondary-foreground": "210 25% 30%",
-            // "--destructive": "0 63% 31%",
-            // "--destructive-foreground": "210 40% 98%",
-            // "--ring": "216 34% 17%",
-            // "--radius": "0.5rem",
-          // },
-        // }),
-          // addBase({
-            // "*": {
-              // "@apply border-border": {},
-            // },
-            // body: {
-              // "@apply bg-background text-foreground": {},
-              // "font-feature-settings": '"rlig" 1, "calt" 1',
-            // },
-          // });
-      // }),
-
       // Embeds Heroicons (https://heroicons.com) into your app.css bundle
       // See your `CoreComponents.icon/1` for more information.
       //

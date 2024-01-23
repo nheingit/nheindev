@@ -54,8 +54,8 @@ defmodule NheindevWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
-
   ## Authentication routes
+
 
   scope "/", NheindevWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
