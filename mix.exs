@@ -53,6 +53,8 @@ defmodule Nheindev.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
       {:petal_components, "~> 1.0"},
+      {:waffle, "~> 1.1"},
+      {:waffle_ecto, "~> 0.0.11"},
     ]
   end
 

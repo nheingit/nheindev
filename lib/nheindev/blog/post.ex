@@ -1,11 +1,13 @@
 defmodule Nheindev.Blog.Post do
   use Ecto.Schema
+  use Waffle.Ecto.Schema
   import Ecto.Changeset
 
   schema "posts" do
     field :title, :string
     field :slug, :string
     field :content, :map
+    field :image_url, Nheindev.Blog.ImageUploader.Type
     field :is_published, :boolean, default: false
     timestamps(type: :utc_datetime)
   end
@@ -37,8 +39,8 @@ defmodule Nheindev.Blog.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :content, :slug, :is_published])
-    |> validate_required([:title, :content])
+    |> cast(attrs, [:title, :content, :slug, :is_published, :image_url])
+    |> validate_required([:title, :content, :image_url])
     |> validate_slug()
     |> maybe_generate_slug()
   end

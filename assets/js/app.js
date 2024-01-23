@@ -34,7 +34,7 @@ import editorjsCodecup from "@calumk/editorjs-codecup";
 let Hooks = {};
 Hooks.Editor = {
   mounted() {
-    let content = JSON.parse(this.el.dataset.content || "{}")
+    let content = JSON.parse(this.el.dataset.content || "{}");
     this.initializeEditor(content);
 
     let saveButton = document.querySelector("#save-editor-content");
@@ -44,7 +44,11 @@ Hooks.Editor = {
         .then((outputData) => {
           const title = document.querySelector("#blog-title").value;
           const isPublished = document.querySelector("#is-published").checked;
-          this.pushEvent("save_content", { title: title, value: outputData, is_published: isPublished });
+          this.pushEvent("save_content", {
+            title: title,
+            value: outputData,
+            is_published: isPublished,
+          });
         })
         .catch((error) => {
           console.log("Saving failed: ", error);
@@ -86,7 +90,22 @@ Hooks.Editor = {
         onChange: (api, event) => {
           api.saver.save().then((outputData) => {
             this.pushEvent("update_content", { value: outputData });
-          })
+          });
+        },
+      });
+
+      let imageInput = document.querySelector("#image-upload");
+      imageInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const imageDataUrl = e.target.result;
+            this.pushEvent("upload_image", {
+              image_url: imageDataUrl,
+            });
+          };
+          reader.readAsDataURL(file);
         }
       });
     } catch (error) {

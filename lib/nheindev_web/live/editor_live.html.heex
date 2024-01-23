@@ -1,13 +1,20 @@
 <div class="grid grid-cols-2">
   <div>
-    <input
-      type="text"
-      id="blog-title"
-      placeholder="Enter Blog Title"
-      value={"#{@post.title}"}
-      class="mb-4 p-2 border border-gray-400"
-      phx-keyup="update_title"
-    />
+    <div class="prose mx-auto">
+      <div class="flex flex-col pb-12">
+        <h2>Title</h2>
+        <input
+          type="text"
+          id="blog-title"
+          placeholder="Enter Blog Title"
+          value={"#{@post.title}"}
+          class="mb-4 p-2 border border-gray-400"
+          phx-keyup="update_title"
+        />
+        <h2>Upload Image</h2>
+        <input type="file" id="image-upload" accept="image/*" />
+      </div>
+    </div>
     <div class="outline-gray-500 outline p-4 mb-4" id="editor-container">
       <div
         id="editorjs"
@@ -27,7 +34,7 @@
     <label for="is-published">Is Published</label>
     <.button label="Save Content" id="save-editor-content" phx-click="save_content" />
   </div>
-  <div class='p-2'>
+  <div class="p-2">
     <%= live_render(@socket, NheindevWeb.PostLive,
       id: "post-preview-#{@slug}",
       session: %{"slug" => @slug}
