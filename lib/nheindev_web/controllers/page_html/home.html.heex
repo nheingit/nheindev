@@ -138,7 +138,7 @@
   </svg>
   <div class="text-center mb-8">
     <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-      Helping Businesses Get Productive With AI
+      Helping 8+ Figure Businesses Get Productive With AI
     </h1>
     <p class="mt-6 text-lg leading-8 text-gray-600"></p>
     <div class="mt-10 flex items-center justify-center gap-x-6">
@@ -160,7 +160,7 @@
     <div class="py-6 grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center md:justify-items-start">
       <%= for post <- @posts do %>
         <.card class="max-w-sm">
-          <.card_media src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
+          <.card_media src={"/images/#{post.slug}.webp"} />
           <.card_content category="Article" heading={"#{post.title}"}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget leo interdum, feugiat ligula eu, facilisis massa. Nunc sollicitudin massa a elit laoreet.
           </.card_content>
@@ -171,24 +171,6 @@
           </.card_footer>
         </.card>
       <% end %>
-      <.card class="max-w-sm">
-        <.card_media src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
-        <.card_content category="Article" heading="Enhance your Phoenix development">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget leo interdum, feugiat ligula eu, facilisis massa. Nunc sollicitudin massa a elit laoreet.
-        </.card_content>
-      </.card>
-      <.card class="max-w-sm grid-cols-1">
-        <.card_media src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
-        <.card_content category="Article" heading="Enhance your Phoenix development">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget leo interdum, feugiat ligula eu, facilisis massa. Nunc sollicitudin massa a elit laoreet.
-        </.card_content>
-      </.card>
-      <.card class="max-w-sm grid-cols-1">
-        <.card_media src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" />
-        <.card_content category="Article" heading="Enhance your Phoenix development">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget leo interdum, feugiat ligula eu, facilisis massa. Nunc sollicitudin massa a elit laoreet.
-        </.card_content>
-      </.card>
     </div>
   </div>
 </div>

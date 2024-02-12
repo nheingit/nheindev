@@ -1,4 +1,5 @@
 <article class="prose mx-auto">
+<img src={"/images/#{@post.slug}.webp"} >
 <h1><%= @post.title %></h1>
 <%= for block <- @post.content["blocks"] do %>
     <%= case block["type"] do %>

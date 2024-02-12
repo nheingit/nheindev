@@ -21,6 +21,7 @@ defmodule NheindevWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "posts", PageController, :posts
     live "/posts/:slug", PostLive, as: :post
   end
 

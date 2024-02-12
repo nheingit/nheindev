@@ -9,4 +9,10 @@ defmodule NheindevWeb.PageController do
     posts = Repo.all(posts_query)
     render(conn, :home, posts: posts, layout: false)
   end
+
+  def posts(conn, _params) do
+    posts_query = from p in Post, where: p.is_published == true
+    posts = Repo.all(posts_query)
+    render(conn, :posts, posts: posts, layout: false)
+  end
 end

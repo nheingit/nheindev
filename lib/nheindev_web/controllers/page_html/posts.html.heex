@@ -1,0 +1,21 @@
+
+  <div class="pt-24 mx-auto max-w-screen-2xl">
+    <h2 class="text-3xl font-bold tracking-tight text-center md:text-left text-gray-900 sm:text-5xl">
+      Recent Posts
+    </h2>
+    <div class="py-6 grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center md:justify-items-start">
+      <%= for post <- @posts do %>
+        <.card class="max-w-sm">
+          <.card_media src={"/images/#{post.slug}.webp"} />
+          <.card_content category="Article" heading={"#{post.title}"}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget leo interdum, feugiat ligula eu, facilisis massa. Nunc sollicitudin massa a elit laoreet.
+          </.card_content>
+          <.card_footer>
+            <.button link_type="a" to={~p"/posts/#{post.slug}"}>
+              <HeroiconsV1.Solid.book_open class="w-4 h-4 mr-2" />Read
+            </.button>
+          </.card_footer>
+        </.card>
+      <% end %>
+    </div>
+  </div>
