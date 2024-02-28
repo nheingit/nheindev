@@ -138,9 +138,21 @@
   </svg>
   <div class="text-center mb-8">
     <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-      Helping 8+ Figure Businesses Get Productive With AI
+      Hey, I'm Noah, I'm a consultant, adviser, and writer focused on devtools and AI.
     </h1>
-    <p class="mt-6 text-lg leading-8 text-gray-600"></p>
+    <p class="mt-6 text-lg leading-8 text-gray-600">
+      I offer advisory and consulting services for startups and venture capitalists, focusing on integrating AI into their applications and developing technical go-to-market strategies/content (DevRel).
+    </p>
+    <p class="mt-6 text-lg leading-8 text-gray-600">
+      Currently, I help produce the newsletter at
+      <.a to="https://www.latent.space/" class="underline" label="latent.space" />
+      and am onboarding the next wave of AI Engineers at
+      <.a
+        to="https://www.latent.space/s/university"
+        class="underline"
+        label="latent space university"
+      />
+    </p>
     <div class="mt-10 flex items-center justify-center gap-x-6">
       <a
         href="/contact"
@@ -162,7 +174,10 @@
         <.card class="max-w-sm">
           <.card_media src={"/images/#{post.slug}.webp"} />
           <.card_content category="Article" heading={"#{post.title}"}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget leo interdum, feugiat ligula eu, facilisis massa. Nunc sollicitudin massa a elit laoreet.
+            <%= post.content["blocks"]
+            |> Enum.find(fn block -> block["type"] == "paragraph" end)
+            |> Map.get("data")
+            |> Map.get("text") %>
           </.card_content>
           <.card_footer>
             <.button link_type="a" to={~p"/posts/#{post.slug}"}>

@@ -35,3 +35,5 @@ nheindev-*.tar
 npm-debug.log
 /assets/node_modules/
 
+#lsp
+.elixir_ls
