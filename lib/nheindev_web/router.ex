@@ -22,6 +22,10 @@ defmodule NheindevWeb.Router do
 
     get "/", PageController, :home
     get "posts", PageController, :posts
+    get "hire", PageController, :hire
+    get "contact", PageController, :contact
+    post "contact", PageController, :submit_contact_form
+    get "portfolio", PageController, :portfolio
     live "/posts/:slug", PostLive, as: :post
   end
 
@@ -55,8 +59,8 @@ defmodule NheindevWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
-  ## Authentication routes
 
+  ## Authentication routes
 
   scope "/", NheindevWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]

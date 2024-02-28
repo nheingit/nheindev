@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title suffix=" · Phoenix Framework">
+    <.live_title suffix=" · Nheindev">
       <%= assigns[:page_title] || "Nheindev" %>
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
@@ -78,19 +78,19 @@
             </a>
             <a
               class="font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
+              href="/hire"
             >
               Hire Me
             </a>
             <a
               class="font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
+              href="/contact"
             >
               Contact
             </a>
             <a
               class="font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
+              href="/portfolio"
             >
               Portfolio
             </a>
@@ -141,17 +141,15 @@
       <%= @inner_content %>
     </main>
     <footer class="w-full py-4 bg-gray-100 text-center">
-    <div className="border-t border-gray-600 pt-5">
-      <div className="text-sm text-gray-200">
-        <%= 
-        [
-          "\u00A9 Copyright",
-          "#{Date.utc_today().year}",
-          " by Nheindev",
-        ] 
-      %>
+      <div className="border-t border-gray-600 pt-5">
+        <div className="text-sm text-gray-200">
+          <%= [
+            "\u00A9 Copyright",
+            "#{Date.utc_today().year}",
+            " by Nheindev"
+          ] %>
+        </div>
       </div>
-    </div>
     </footer>
   </body>
 </html>
